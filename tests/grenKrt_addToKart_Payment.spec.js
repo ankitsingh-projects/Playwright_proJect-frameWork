@@ -1,7 +1,7 @@
 const {test,expect} = require('@playwright/test');
 
-test("Add to Kart", async ({page})=>{
-
+test.only("Add to Kart", async ({page})=>{
+//e2e flow for add to kart to proceed 
     await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
     await page.locator('[type="search"]').fill('ca');
     await page.getByText('ADD TO CART').nth(1).click();
@@ -12,16 +12,22 @@ test("Add to Kart", async ({page})=>{
     await page.locator('[alt="Cart"]').click();
     await page.locator('[type="search"]').fill('');                                                               
     await page.locator('[type="search"]').fill('almonds');
-    
-
-    await page.locator('[fdprocessedid="ywbnn"]').click();
-
-    await page.waitForTimeout(3000); 
+    await page.waitForTimeout(2000); 
+    await page.locator("text=ADD TO CART").click();
 
     await page.locator('[alt="Cart"]').click(); 
-await page.waitForTimeout(3000);
-    await expect(await page.locator('[alt="Cart"]')).toContainText('almonds');
- });
+    await page.locator('text=PROCEED TO CHECKOUT').click();
+    await page.locator('text=Place Order').click(); 
+    await page.locator('div select').selectOption("India");
+    await page.locator('text=Proceed').click();
+    await expect(page.locator('.errorAlert')).toHaveText('Please accept Terms & Conditions - Required')
+    await page.locator('[type="checkbox"]').click();
+    await page.locator('text=Proceed').click();
+    await expect(page.locator('div .brand')).toHaveText('GREENKART');
+    await page.pause();
+
+
+});
 
  test("AutomationPractice", async ({page})=>{
 
@@ -46,7 +52,7 @@ await page.locator('[id="dropdown-class-example"]').selectOption('option3');
 await page.locator('[placeholder*="Countries"]').pressSequentially('ind',{delay:100});
 const dropDownD = page.locator('[id="ui-id-1"]');
 await dropDownD.waitFor();
-const countS =dropDownD.locator('li div').count();
+const countS = dropDownD.locator('li div').count();
 
 
 for ( let i=0; i<countS, ++i;){
