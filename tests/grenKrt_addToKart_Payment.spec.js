@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test');
 
-test.only("Add to Kart", async ({page})=>{
+test("Add to Kart", async ({page})=>{
 //e2e flow for add to kart to proceed 
     await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
     await page.locator('[type="search"]').fill('ca');
@@ -61,6 +61,33 @@ for ( let i=0; i<countS, ++i;){
         await dropDownD.locator("li div").nth(i).click()
     break;
    }
+}
+
+
+
+
+
+
+})
+
+
+// getting any text content from web table 
+test("getting any text content from web table", async ({page})=>{
+await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+
+await page.locator('[name="courses"]').waitFor();
+
+const rows =  page.locator('tbody tr');
+for(let i=0; i<rows; ++i){
+
+    const rowsCourse = rows.nth(i).locator("td").textContent();
+    if(rowsCourse.includes(textContent("effective QA Resume"))){
+
+        await rows.nth(i).locator("td").textContent();
+expect (rows.locator('td').toHaveText("")) 
+        await page.pause();
+    }
+    
 }
 
  })
