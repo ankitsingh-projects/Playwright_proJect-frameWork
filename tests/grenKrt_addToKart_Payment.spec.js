@@ -26,7 +26,6 @@ test("Add to Kart", async ({page})=>{
     await expect(page.locator('div .brand')).toHaveText('GREENKART');
     await page.pause();
 
-
 });
 
  test("AutomationPractice", async ({page})=>{
@@ -62,11 +61,6 @@ for ( let i=0; i<countS, ++i;){
     break;
    }
 }
-
-
-
-
-
 
 })
 
