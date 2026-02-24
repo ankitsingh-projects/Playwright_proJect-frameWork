@@ -30,19 +30,49 @@ await expect.soft(page.locator('[routerlink="/auth/register"]')).toBeVisible();
 
 });
 
-test.only('child window', async ({browser})=> {
+test('child window', async ({page})=> {
 
-const context = await browser.newContext();
-const page = await context.newPage();
+// const context = await browser.newContext();
+// const page = await context.newPage();
 
-await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
-const childWindow = await page.locator('.blinkingText');
+// await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+// const childWindow = await page.locator('.blinkingText');
 
-const [newPagecW] = await Promise.all ([
-context.waitForEvent('page'),
-childWindow.click(),
-])
-const text1 = await newPagecW.locator('.inner-box h1').textContent();
-console.log(text1);
+// const [newPagecW] = await Promise.all ([
+// context.waitForEvent('page'),
+// childWindow.click(),
+// ])
+// const text1 = await newPagecW.locator('.inner-box h1').textContent();
+// console.log(text1);
 
-})
+
+
+// test.only('child window using page fixture', async ({ page }) => {
+
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+
+  const [newPagecW] = await Promise.all([
+    page.waitForEvent('popup'),
+    page.locator('.blinkingText').click()
+  ]);
+
+  const text1 = await newPagecW.locator('.inner-box h1').textContent();
+
+  console.log(text1);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
