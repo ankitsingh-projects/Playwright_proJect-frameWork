@@ -2,6 +2,10 @@ const {test,expect} = require('@playwright/test');
 
 // import { generateFirstName, generateLastName } from '../utils/Registration_data_lets_sHop.js';
 // import { generateR_eMail } from '../utils/Registration_data_lets_sHop.js';
+
+const {user_Login} = require('../POM/login.js');
+
+
 import { 
   generateFirstName, 
   generateLastName, 
@@ -43,7 +47,7 @@ await expect.soft(page.locator('[routerlink="/auth/register"]')).toBeVisible();
 });
 
 
-test.only('Signup', async ({page})=> {
+test('Signup', async ({page})=> {
 
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 
@@ -119,6 +123,18 @@ await page.locator('[value="Register"]').click();
 
 // });
 
+test.only('login', async ({page}) => {
+
+  const user_Email = "testtest5@gmail.com";
+  const user_Password = "Was@1234";
+  const Login = new user_Login(page);
+
+  await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+
+  Login.valid_login(user_Email,user_Password);
+
+
+})
 
 
 
