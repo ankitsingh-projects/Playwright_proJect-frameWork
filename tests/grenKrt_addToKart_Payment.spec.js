@@ -1,7 +1,8 @@
 const {test,expect} = require('@playwright/test');
 
-test("Add to Kart", async ({page})=>{
-//e2e flow for add to kart to proceed 
+test("Add to Kart", async ({page})=>{  
+
+    //e2e flow for add to kart to proceed 
     await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
     await page.locator('[type="search"]').fill('ca');
     await page.getByText('ADD TO CART').nth(1).click();
@@ -14,7 +15,6 @@ test("Add to Kart", async ({page})=>{
     await page.locator('[type="search"]').fill('almonds');
     await page.waitForTimeout(2000); 
     await page.locator("text=ADD TO CART").click();
-
     await page.locator('[alt="Cart"]').click(); 
     await page.locator('text=PROCEED TO CHECKOUT').click();
     await page.locator('text=Place Order').click(); 
@@ -25,14 +25,13 @@ test("Add to Kart", async ({page})=>{
     await page.locator('text=Proceed').click();
     await expect(page.locator('div .brand')).toHaveText('GREENKART');
     await page.pause();
-
 });
 
- test("AutomationPractice", async ({page})=>{
+test("AutomationPractice", async ({page})=>{
 
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
-// handling radio button with asseration 
+//handling radio button with asseration 
 await page.locator('[value="radio1"]').click();
 await expect(page.locator('[value="radio1"]')).toBeChecked();
 await page.locator('[value="radio1"]').click();
@@ -41,31 +40,26 @@ await expect(page.locator('[value="radio2"]')).toBeChecked();
 await page.locator('[value="radio3"]').click();
 console.log(await page.locator('[value="radio3"]').isChecked());
 
-// handling the static dropdown 
+//handling the static dropdown with asserations 
 await page.locator('[id="dropdown-class-example"]').selectOption('option1');
 await page.locator('[id="dropdown-class-example"]').selectOption('option2');
 await page.locator('[id="dropdown-class-example"]').selectOption('option3');
 
-
-// handling the dynamic dropdown 
+//handling the dynamic dropdown 
 await page.locator('[placeholder*="Countries"]').pressSequentially('ind',{delay:100});
 const dropDownD = page.locator('[id="ui-id-1"]');
 await dropDownD.waitFor();
 const countS = dropDownD.locator('li div').count();
-
-
 for ( let i=0; i<countS, ++i;){
  const    text = await dropDownD.locator("li div").nth(i).textContent();
     if (text === "India"){
         await dropDownD.locator("li div").nth(i).click()
     break;
-   }
-}
+   };
+};
+});
 
-})
-
-
-// getting any text content from web table 
+//getting any text content from web table 
 test("getting any text content from web table", async ({page})=>{
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
@@ -80,16 +74,5 @@ for(let i=0; i<rows; ++i){
         await rows.nth(i).locator("td").textContent();
 expect (rows.locator('td').toHaveText("")) 
         await page.pause();
-    }
-    
-}
-
- })
-
-
- 
-
-
-
-
-  
+    }};
+});

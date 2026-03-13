@@ -1,4 +1,3 @@
-
 export function generateFirstName(length) {
   return Math.random().toString(36).substring(2, 2 + length);
 }
@@ -6,7 +5,6 @@ export function generateFirstName(length) {
 export function generateLastName(length) {
   return Math.random().toString(36).substring(2, 2 + length);
 }
-
 
 export function generateR_eMail(){
 const email_random = Math.random().toString(36).substring(2,9);
@@ -38,9 +36,3 @@ export function generatePassword() {
     chars[Math.floor(Math.random() * chars.length)]
   ).join('');
 }
-
-
-
-
-
-//export { generateFirstName, generateLastName };
