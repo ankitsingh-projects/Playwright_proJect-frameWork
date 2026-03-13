@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test');
 
-test.only("saucdemo", async({page}) =>{
+test("saucdemo", async({page}) =>{
 
 await page.goto('https://www.saucedemo.com/');
 await expect(page).toHaveURL('https://www.saucedemo.com/');
@@ -40,5 +40,38 @@ await page.locator('#continue').click();
 await page.locator('#finish').click();
 await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
 await page.locator('#back-to-products').click();
+
+});
+
+test('child window using browser fixture', async ({browser})=> {
+
+const context = await browser.newContext();
+const page = await context.newPage();
+
+await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+const childWindow = await page.locator('.blinkingText').first();
+
+const [newPagec] = await Promise.all ([
+context.waitForEvent('page'),
+childWindow.click(),
+])
+const text2 = await newPagec.locator('.inner-box h1').textContent();
+console.log(text2);
+});
+
+
+test('child window using page fixture', async ({ page }) => {
+
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+  const ChildWindow = await page.locator('.blinkingText').first();
+
+  const [newPagecW] = await Promise.all([
+    page.waitForEvent('popup'),
+   ChildWindow.click()
+  ]);
+
+  const text1 = await newPagecW.locator('.inner-box h1').textContent();
+
+  console.log(text1);
 
 });
