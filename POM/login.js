@@ -12,5 +12,11 @@ this.signinbtn = page.locator('[id="login"]');
 	    await this.signinbtn.click();
 
     }
+
+    async invalid_login(user_Email,user_Password){
+	    await this.user_Email.fill(user_Email);
+	    await this.user_Password.fill(user_Password);
+        await this.signinbtn.click();
+    }
 }
 module.exports = {user_Login};
