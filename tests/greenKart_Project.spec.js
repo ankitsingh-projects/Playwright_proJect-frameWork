@@ -24,7 +24,7 @@ test("Add to Kart", async ({page})=>{
     await page.locator('[type="checkbox"]').click();
     await page.locator('text=Proceed').click();
     await expect(page.locator('div .brand')).toHaveText('GREENKART');
-    await page.pause();
+    
 });
 
 test("AutomationPractice", async ({page})=>{
@@ -72,7 +72,7 @@ for(let i=0; i<rows; ++i){
     if(rowsCourse.includes(textContent("effective QA Resume"))){
 
         await rows.nth(i).locator("td").textContent();
-expect (rows.locator('td').toHaveText("")) 
-        await page.pause();
+expect (rows.locator('td').toHaveText("effective QA Resume")); 
+       
     }};
 });
