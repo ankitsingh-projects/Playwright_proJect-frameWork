@@ -28,7 +28,7 @@ await expect(page.locator('[role="alert"]')).toHaveText("Incorrect email or pass
 });
 
 // valid login
-test.only('login', async ({page}) => {
+test('login', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 login(page);
 });

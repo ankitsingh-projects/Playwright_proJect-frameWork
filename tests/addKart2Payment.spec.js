@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test');
 const {user_Login} = require('../POM/login.js');
-const { Payment } = require('../utils/Payment_Page.js');
+const {Payment} = require('../utils/Payment_Page.js');
 
 async function addProductToCart(page, index) {
   await page.getByText("View").nth(index).click();
