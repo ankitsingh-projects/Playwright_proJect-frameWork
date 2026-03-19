@@ -1,11 +1,3 @@
-const {test,expect}= require('playwright/test');
-
- const email = await page.locator('.orangehrm-demo-credentials p').first().textContext();
-
-const password = await page.locator('.orangehrm-demo-credentials p').last();
-
-
-
 //  To fetch username/password from UI fields in OrangeHRM
 //  and reuse them for login in Playwright, you’re essentially doing read → store → reuse.
 
