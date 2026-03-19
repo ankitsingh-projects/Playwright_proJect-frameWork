@@ -10,7 +10,7 @@ import {
   generatePassword
 } from '../utils/Registration_data_lets_sHop.js';
 
-test.only('Signup', async ({page})=> {
+test('Signup', async ({page})=> {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 await page.locator('[routerlink="/auth/register"]').click();
 
