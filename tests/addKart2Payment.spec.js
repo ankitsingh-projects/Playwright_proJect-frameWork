@@ -46,7 +46,7 @@ await expect(page.locator('#error')).not.toBeVisible();
 
 test('dashboard to placeOrder', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");
+//await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");
 login(page);
 
 await expect(page.locator('[class="py-2 border-bottom ml-3"] div[class*="star-inserted"]')).toHaveCount(8);

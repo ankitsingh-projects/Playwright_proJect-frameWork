@@ -81,7 +81,4 @@ test('testfilpkart', async ({page})=>{
   await page.goto('https://www.flipkart.com/');
   await page.locator('[alt="Login"]').click();
   await page.locator('[type="text"]').last().fill("avcde@fgmail.com")
-
-
-
 })
