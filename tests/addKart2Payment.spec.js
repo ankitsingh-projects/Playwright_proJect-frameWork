@@ -47,7 +47,7 @@ await expect(page.locator('#error')).not.toBeVisible();
 test('dashboard to placeOrder', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 //await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");
-login(page);
+await login(page);
 
 await expect(page.locator('[class="py-2 border-bottom ml-3"] div[class*="star-inserted"]')).toHaveCount(8);
 await expect(page.locator('[class="py-2 ml-3"] [type="checkbox"]')).toHaveCount(2);
@@ -56,7 +56,7 @@ await expect(page.locator('[id="res"]')).toHaveText("Showing 3 results   | ");
 
 await expect(page.locator('[class="card"]')).toHaveCount(3);
 
-const titles = page.locator('[style="text-transform: uppercase;"]');
+const titles = await page.locator('[style="text-transform: uppercase;"]');
 const Count = await titles.count();
 
 for(let i=0; i<Count; i++){
@@ -70,7 +70,7 @@ await addProductToCart(page, 1);
 
 await page.locator('[routerlink="/dashboard/cart"]').click();
 await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
-await page.locator('[class*=btn-primary]').last().click({force:true});
+await page.locator('[class*=btn-primary]').last().click();
 
 //Payment(page);
 await Payment(page);
