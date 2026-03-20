@@ -44,7 +44,7 @@ await expect(page.locator('#error')).not.toBeVisible();
 });
 
 
-test('dashboard to placeOrder', async ({page}) => {
+test.only('dashboard to placeOrder', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 //await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");
 login(page);
@@ -70,7 +70,7 @@ await addProductToCart(page, 2);
 
 await page.locator('[routerlink="/dashboard/cart"]').click();
 await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
-await page.locator('[class="btn btn-primary"]').nth(1).click();
+await page.locator('button[class="btn btn-primary"]').nth(1).click();
 
 //Payment(page);
 await Payment(page);
