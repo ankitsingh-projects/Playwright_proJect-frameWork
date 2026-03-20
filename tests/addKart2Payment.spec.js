@@ -70,7 +70,7 @@ await addProductToCart(page, 1);
 
 await page.locator('[routerlink="/dashboard/cart"]').click();
 await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
-await page.locator('[class="totalRow"] [class*=btn-primary]').click({force:true});
+await page.locator('[class*=btn-primary]').last().click({force:true});
 
 //Payment(page);
 await Payment(page);
