@@ -31,8 +31,8 @@ await page.locator('#userPassword').fill(User_Password);
 await page.locator('#confirmPassword').fill(User_Password);
 await page.locator('[type="checkbox"]').click();
 await page.locator('[value="Register"]').click();
-//await page.pause();
-await page.locator('[routerlink="/auth"]').toBeVisible().click({force:true});
+
+await page.locator('[routerlink="/auth"]').click({force:true});
 await page.waitForURL('**/auth/login');
 
 const Login = new user_Login(page);

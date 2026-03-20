@@ -64,13 +64,13 @@ for(let i=0; i<Count; i++){
   console.log(product_Names);
 }
 
-await addProductToCart(page, 0);
+//await addProductToCart(page, 0);
 await addProductToCart(page, 1);
-await addProductToCart(page, 2);
+//await addProductToCart(page, 2);
 
 await page.locator('[routerlink="/dashboard/cart"]').click();
 await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
-await page.locator('.cartSection [class*=btn-primary]').nth(0).click();
+await page.locator('.cartSection [class*=btn-primary]').first().click();
 
 //Payment(page);
 await Payment(page);
