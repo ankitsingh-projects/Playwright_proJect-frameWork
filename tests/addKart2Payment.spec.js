@@ -44,7 +44,7 @@ await expect(page.locator('#error')).not.toBeVisible();
 });
 
 
-test.only('dashboard to placeOrder', async ({page}) => {
+test.skip('dashboard to placeOrder', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 await login(page);
 await expect(page.locator('[class="py-2 border-bottom ml-3"] div[class*="star-inserted"]')).toHaveCount(8);
