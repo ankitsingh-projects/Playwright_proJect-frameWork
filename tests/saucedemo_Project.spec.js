@@ -75,3 +75,4 @@ test('child window using page fixture', async ({ page }) => {
   console.log(text1);
 
 });
+

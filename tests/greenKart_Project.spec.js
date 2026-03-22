@@ -3,12 +3,12 @@ const {test,expect} = require('@playwright/test');
 test("Add to Kart", async ({page})=>{  
 
     //e2e flow for add to kart to proceed 
-    await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
+    await page.goto('https://rahulshettyacademy.com/seleniumPractise');
     await page.locator('[type="search"]').fill('ca');
     await page.getByText('ADD TO CART').nth(1).click();
     await page.getByText('ADD TO CART').first().click();
     await page.getByText('ADD TO CART').last().click();
-    console.log( await page.locator('div h4').allTextContents()); 
+    console.log(await page.locator('div h4').allTextContents()); 
     await page.locator('[alt="Cart"]').click();
     await page.locator('[alt="Cart"]').click();
     await page.locator('[type="search"]').fill('');                                                               
