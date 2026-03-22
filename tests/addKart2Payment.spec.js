@@ -44,11 +44,9 @@ await expect(page.locator('#error')).not.toBeVisible();
 });
 
 
-test('dashboard to placeOrder', async ({page}) => {
+test.only('dashboard to placeOrder', async ({page}) => {
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-//await expect(page).toHaveURL("https://rahulshettyacademy.com/client/#/dashboard/dash");
 await login(page);
-
 await expect(page.locator('[class="py-2 border-bottom ml-3"] div[class*="star-inserted"]')).toHaveCount(8);
 await expect(page.locator('[class="py-2 ml-3"] [type="checkbox"]')).toHaveCount(2);
 await expect(page.locator('[class="m-2 blink_me"]')).toHaveText(" User can only see maximum 9 products on a page");
@@ -64,11 +62,13 @@ for(let i=0; i<Count; i++){
   console.log(product_Names);
 }
 
-//await addProductToCart(page, 0);
 await addProductToCart(page, 1);
+//await addProductToCart(page, 1);
 //await addProductToCart(page, 2);
 
-await page.locator('[routerlink="/dashboard/cart"]').click();
+
+
+await page.getByRole('button', { name: 'Cart' }).click();
 await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
 await page.locator('[class*=btn-primary]').last().click();
 
