@@ -1,9 +1,5 @@
 export async function Payment(page) {
-
-  
-
   const countryInput = page.locator('[placeholder="Select Country"]');
-
   await countryInput.click();
   await countryInput.pressSequentially('ind', { delay: 100 });
 
