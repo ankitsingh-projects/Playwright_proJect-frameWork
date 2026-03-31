@@ -19,7 +19,7 @@ async function login(page){
 
 test("Url_navigation & asseration on home page", async ({page})=>{ 
 // url navigation and asseration 
-    await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+    await page.goto('https://rahulshettyacademy.com/client/ecom/auth/login');
    await expect(page).toHaveURL('https://rahulshettyacademy.com/client/#/auth/login');
 
 //test asseration Text Content , partial text
@@ -44,8 +44,8 @@ await expect(page.locator('#error')).not.toBeVisible();
 });
 
 
-test.skip('dashboard to placeOrder', async ({page}) => {
-await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+test('dashboard asserations', async ({page}) => {
+await page.goto('https://rahulshettyacademy.com/client/ecom/auth/login');
 await login(page);
 await expect(page.locator('[class="py-2 border-bottom ml-3"] div[class*="star-inserted"]')).toHaveCount(8);
 await expect(page.locator('[class="py-2 ml-3"] [type="checkbox"]')).toHaveCount(2);
@@ -62,20 +62,39 @@ for(let i=0; i<Count; i++){
   console.log(product_Names);
 }
 
-await addProductToCart(page, 1);
-//await addProductToCart(page, 1);
-//await addProductToCart(page, 2);
-
-
-
-await page.getByRole('button', { name: 'Cart' }).click();
-await expect(page.locator('[class="heading cf"] h1')).toHaveText("My Cart");
-await page.locator('[class*=btn-primary]').last().click();
-
-//Payment(page);
-await Payment(page);
-await page.locator('[class*="action__submit"]').click();
 });
+
+test('place_Order', async ({page}) =>{
+  const product_Name =  "ZARA COAT 3";
+ const Products = await page.locator('.card-body');
+await page.goto('https://rahulshettyacademy.com/client/ecom/auth/login'); 
+await login(page);
+await page.locator('.card-body').first().waitFor();
+const title_Products = await page.locator('.card-body b').allTextContents();
+console.log(title_Products);
+const count = await Products.count();
+
+for(let i=0; i<count; i++){
+if( await Products.nth(i).locator('b') === product_Name){
+await Products.nth(i).locator("text=Add To Cart").click();
+await page.locator('//button[@routerlink="/dashboard/cart"]').click();
+await page.locator("text=Checkout").click();
+await page.locator('[placeholder="Select Country"]').pressSequentially('ind',{delay:100});
+const dropdown = await page.locator(".ta-results")
+await dropdown.waitFor();
+const optionCount = await dropdown.locator('button').count();
+for(let i=0; i<optionCount; i++){
+const text = await dropdown.locator('button').nth(i).textContent();
+if(text === "India"){
+await dropdown.locator('button').nth(i).click();
+await page.locator('a[class*=action__submit]').click();
+break;
+}
+}
+}
+}
+
+})
 
 test("OrderID extraction as web table", async ({page})=> {
     const user_Email = "testtest5@gmail.com";

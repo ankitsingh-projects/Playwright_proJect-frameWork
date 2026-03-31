@@ -8,7 +8,7 @@ async function login(page){
   Login.valid_login(user_Email,user_Password);
 }
 
-//login without credentials
+//login without credentials error messages 
 test('login without credentials', async ({page}) =>{
 await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 await page.locator('[id="login"]').click();

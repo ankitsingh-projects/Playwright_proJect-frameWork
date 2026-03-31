@@ -32,7 +32,7 @@ await page.locator('#confirmPassword').fill(User_Password);
 await page.locator('[type="checkbox"]').click();
 await page.locator('[value="Register"]').click();
 
-await page.locator('[class="btn btn-primary"]').click({force:true});
+await page.locator('//button[@class="btn btn-primary"]').click({force:true});
 await page.waitForURL('**/auth/login');
 
 const Login = new user_Login(page);

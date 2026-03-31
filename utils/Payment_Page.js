@@ -1,16 +1,12 @@
 export async function Payment(page) {
+ await page.locator('[placeholder="Select Country"]').click();
+await page.locator('[placeholder="Select Country"]').fill('ind');
 
-  
+await page.locator('.ta-results').waitFor();
 
-  const countryInput = page.locator('[placeholder="Select Country"]');
-
-  await countryInput.click();
-  await countryInput.pressSequentially('ind', { delay: 100 });
-
-  const dropdown = page.locator('.ta-results');
-  await dropdown.waitFor({ state: 'visible' });
-
-  await dropdown.locator('button', { hasText: 'India' }).click();
+await page.locator('.ta-results button')
+  .filter({ hasText: 'India' })
+  .click();
 }
 
 
