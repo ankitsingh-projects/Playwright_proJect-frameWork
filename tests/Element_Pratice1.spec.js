@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test')
 
 
-test.only("Web elements Practice", async ({page})=>{
+test("Web elements Practice", async ({page})=>{
 
     await page.goto('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
 
@@ -12,8 +12,8 @@ test.only("Web elements Practice", async ({page})=>{
     await page.locator('[placeholder="Last Name"]').fill("Reveng");
     await page.locator('[placeholder="Post Code"]').fill("201019");
     await page.locator('[type="submit"]').click();
-    await page.locator('[type="submit"]').screenshot({path:'partialss.png'});
-    await page.locator('[type="submit"]').screenshot({path:'screenshot/submitbutton.png'});
+    // await page.locator('[type="submit"]').screenshot({path:'partialss.png'});
+    // await page.locator('[type="submit"]').screenshot({path:'screenshot/submitbutton.png'});
     
     await  page.on('dialog', dialog=> dialog.accept());
  
