@@ -115,6 +115,6 @@ const orderIdDetails = await page.locator('.col-text').textContent();
 await console.log(orderIdDetails);
 await expect(orderIdDetails.includes(rowOrderId.trim())).toBeTruthy();
 break;
-}
-}
-})
+};
+};
+});
