@@ -13,9 +13,9 @@ const config = ({
 
     timeout: 10000
   },
-  reporter: 'html',
+  reporter: 'allure-playwright',
   use: {
-    worker:2,
+    worker:1,
 
   browserName: 'chromium',
   headless: true,
